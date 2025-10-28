@@ -1,0 +1,34 @@
+users {
+    name
+    email
+    password
+    profileImage
+    income (ref) : [
+        {
+            icon
+            source
+            amount
+            date
+        }
+    ]
+    expense (ref) : [
+        {
+            icon
+            category
+            amount
+            date
+        }
+    ]
+}
+
+
+ab mujeh aik dashboard bna kr do satic jis navbar ho left side bar ho aur use m (dashboard,income,expanse,profile,logout k option ho)
+aur dashoard m user ki total icomes, total expaness, total balance show ho rha ho
+aur ye chezen show krwany k lien grap bhi hon
+aur recent transaction bhi show ho rhi hon
+aur income aur total expanse k alag alag table bhi hon dashboard pr
+using next js + tailwind css
+modern and attractive ui banan, aur textures, animation wagera wagera bhi use krna
+
+
+pending -----------
