@@ -4,7 +4,7 @@ const User = require("../models/users");
 // Add Expense Controller
 const addIncome = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.user;
     const { icon, source, amount,date } = req.body;
 
     //  Basic validation
@@ -38,7 +38,7 @@ const addIncome = async (req, res) => {
     await user.save();
 
     //  Populate user with latest incomes
-    const updatedUser = await User.findById(id).populate("incomes").populate("expenses");
+    const updatedUser = await User.findById(id).populate("incomes");
 
     res.status(201).json({
       message: "income added successfully",

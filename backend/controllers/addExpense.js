@@ -4,7 +4,7 @@ const User = require("../models/users");
 // Add Expense Controller
 const addExpense = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.user;
     const { icon, category, amount,date } = req.body;
 
     //  Basic validation

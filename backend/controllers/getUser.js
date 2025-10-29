@@ -5,8 +5,8 @@ const getUserById = async (req, res) => {
     const userId = req.user.id;
 
     const user = await Users.findById(userId)
-    //   .populate("incomes")
-    //   .populate("expenses");
+      .populate("incomes")
+      .populate("expenses");
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });

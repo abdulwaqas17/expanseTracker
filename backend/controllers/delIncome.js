@@ -25,7 +25,12 @@ const deleteIncome = async (req, res) => {
       await user.save();
     }
 
-    res.status(200).json({ message: "Income deleted successfully" });
+    //  Populate user with latest incomes
+    const updatedUser = await User.findById(userId).populate("incomes");
+
+    res
+      .status(200)
+      .json({ message: "Income deleted successfully", user: updatedUser });
   } catch (error) {
     console.error("Error deleting income:", error);
     res.status(500).json({ message: "Internal server error" });
