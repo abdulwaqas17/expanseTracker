@@ -2,7 +2,7 @@ const Users = require("../models/users");
 
 const getUserById = async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = req.user.id;
 
     const user = await Users.findById(userId)
     //   .populate("incomes")

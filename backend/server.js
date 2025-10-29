@@ -7,7 +7,7 @@ let userRoutes = require('./routes/userRoutes');
 let expenseRoutes = require('./routes/expenseRoutes');
 let incomeRoutes = require('./routes/incomeRoutes');
 
-let cors = require('cors');
+let cors = require('cors'); 
 
 app.use(express.json()); 
 

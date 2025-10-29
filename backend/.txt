@@ -32,3 +32,41 @@ modern and attractive ui banan, aur textures, animation wagera wagera bhi use kr
 
 
 pending -----------
+
+
+dashboard
+  [id]
+    overview
+      page.js
+    expense
+      page.js  
+
+
+
+
+
+
+
+
+
+
+delte ---------
+dashboard
+  [id]
+    page.js
+
+import HomeDash from '@/components/dashboard/HomeDash'
+import Layout from '@/components/dashboard/Layout'
+import React from 'react'
+
+const page = () => {
+  return (
+    <div>
+          <Layout>
+      <HomeDash />
+    </Layout>
+    </div>
+  )
+}
+
+export default page
