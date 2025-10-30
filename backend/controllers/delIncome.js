@@ -26,7 +26,7 @@ const deleteIncome = async (req, res) => {
     }
 
     //  Populate user with latest incomes
-    const updatedUser = await User.findById(userId).populate("incomes");
+    const updatedUser = await User.findById(userId).populate("incomes").populate("expenses");
 
     res
       .status(200)

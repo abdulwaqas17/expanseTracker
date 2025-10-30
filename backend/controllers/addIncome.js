@@ -38,7 +38,7 @@ const addIncome = async (req, res) => {
     await user.save();
 
     //  Populate user with latest incomes
-    const updatedUser = await User.findById(id).populate("incomes");
+    const updatedUser = await User.findById(id).populate("incomes").populate("expenses");
 
     res.status(201).json({
       message: "income added successfully",

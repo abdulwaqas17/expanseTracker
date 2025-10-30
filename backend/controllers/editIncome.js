@@ -28,7 +28,7 @@ income.date = date;
 await income.save();
 
 // 🔁 Find and populate updated user
-const updatedUser = await User.findById(userId).populate("incomes");
+const updatedUser = await User.findById(userId).populate("incomes").populate("expenses");
 
 res.status(200).json({
   message: "Income updated successfully",
