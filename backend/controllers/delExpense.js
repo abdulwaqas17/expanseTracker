@@ -7,16 +7,16 @@ const deleteExpense = async (req, res) => {
     const { expenseID } = req.params;
     const userId = req.user.id; // from verifyToken middleware
 
-    // ✅ Find expense
+    //  Find expense
     const expense = await Expense.findById(expenseID);
     if (!expense) {
       return res.status(404).json({ message: "Expense not found" });
     }
 
-    // ✅ Delete expense
+    //  Delete expense
     await Expense.findByIdAndDelete(expenseID);
 
-    // ✅ Remove expenseID from user's expenses array
+    //  Remove expenseID from user's expenses array
     const user = await User.findById(userId);
     if (user) {
       user.expenses = user.expenses.filter(
