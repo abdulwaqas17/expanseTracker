@@ -5,7 +5,7 @@ let connectDB = require('./config/db');
 let authRoutes = require('./routes/authRoutes');
 let userRoutes = require('./routes/userRoutes');
 let expenseRoutes = require('./routes/expenseRoutes');
-let incomeRoutes = require('./routes/incomeRoutes');
+let incomeRoutes = require('./routes/incomeRoutes'); 
 
 let cors = require('cors'); 
 
@@ -20,7 +20,6 @@ app.use(cors());
 
 // to connect mongo db
 connectDB();
-
 
 // Routes
 app.use('/', authRoutes);
