@@ -7,11 +7,11 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const getAISuggestion = async (req, res) => {
   try {
     const { totalBalance, totalIncome, totalExpense, transactions } = req.body;
-    console.log('====================================');
+    console.log("====================================");
     console.log(totalBalance, totalIncome, totalExpense, transactions);
-    console.log('====================================');
+    console.log("====================================");
 
-    const prompt = `
+const prompt = `
 Tum aik AI Financial Advisor ho.
 User ki financial summary ye hai:
 - Total Income: ${totalIncome}
@@ -19,26 +19,27 @@ User ki financial summary ye hai:
 - Total Balance: ${totalBalance}
 - Transactions: ${JSON.stringify(transactions, null, 2)}
 
+Tumhe transactions ka analysis karna hai aur user ko personalized insights deni hain:
+1. Batao kin categories/items par sabse zyada expense hua hai, jo tumhey Transactions array m recive hwa h us ki base pr (e.g. Food, Transport etc).
+2. Agar possible ho to mention karo kis source se sabse zyada income hui hai, jo tumhey Transactions array m recive hwa h us ki base pr (e.g. Salary, Freelance etc).
+3. In details ko apne tips me shamil karo — taake user ko lage ke ye uske data par based analysis hai.
+
 Roman Urdu me jawab do aur output ko **sirf JSON object** ki form me return karo.
-Har section me 3-4 short aur practical tips do.
 Structure bilkul aise hona chahiye:
 
 {
   "balanceTips": ["tip1", "tip2", "tip3"],
-  "expenseManagement": ["tip1", "tip2", "tip3"],
-  "incomeOptimization": ["tip1", "tip2", "tip3"],
+  "expenseManagement": ["tip1 (mention high expense categories)", "tip2", "tip3"],
+  "incomeOptimization": ["tip1 (mention high income source if possible)", "tip2", "tip3"],
   "quickWins": ["tip1", "tip2", "tip3"]
 }
 
-Sirf JSON object return karo, koi explanation ya text nahi likhna.
+Sirf JSON object return karo, koi explanation ya extra text nahi likhna.
 `;
 
-
-
-
-console.log('====================================');
-console.log(JSON.stringify(transactions, null, 2));
-console.log('====================================');
+    console.log("====================================");
+    console.log(JSON.stringify(transactions, null, 2));
+    console.log("====================================");
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -71,47 +72,10 @@ module.exports = getAISuggestion;
 
 
 
-const prompt = `
-Tum aik AI Financial Advisor ho.
-User ki financial summary ye hai:
-- Total Income: ${totalIncome}
-- Total Expense: ${totalExpense}
-- Total Balance: ${totalBalance}
-- Transactions: ${JSON.stringify(transactions, null, 2)}
-
-Tumhe transactions ka analysis karna hai aur user ko personalized insights deni hain:
-1. Batao kin categories/items par sabse zyada expense hua hai, jo tumhey Transactions array m recive hwa h us ki base pr (e.g. Food, Transport etc).
-2. Agar possible ho to mention karo kis source se sabse zyada income hui hai, jo tumhey Transactions array m recive hwa h us ki base pr (e.g. Salary, Freelance etc).
-3. In details ko apne tips me shamil karo — taake user ko lage ke ye uske data par based analysis hai.
-
-Roman Urdu me jawab do aur output ko **sirf JSON object** ki form me return karo.
-Structure bilkul aise hona chahiye:
-
-{
-  "balanceTips": ["tip1", "tip2", "tip3"],
-  "expenseManagement": ["tip1 (mention high expense categories)", "tip2", "tip3"],
-  "incomeOptimization": ["tip1 (mention high income source if possible)", "tip2", "tip3"],
-  "quickWins": ["tip1", "tip2", "tip3"]
-}
-
-Sirf JSON object return karo, koi explanation ya extra text nahi likhna.
-`;
-
-
-
-
-
-
-
-
-
-
-
 // const OpenAI  = require("openai");
 // const dotenv  = require("dotenv");
 
 // dotenv.config();
-
 
 // const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 //  const getAISuggestion = async (req, res) => {
@@ -128,7 +92,7 @@ Sirf JSON object return karo, koi explanation ya extra text nahi likhna.
 //       Balance: ${totalBalance}
 //       Transactions: ${JSON.stringify(transactions, null, 2)}
 
-//       Ab is data ke basis par user ko 3 short aur smart suggestions do 
+//       Ab is data ke basis par user ko 3 short aur smart suggestions do
 //       ke wo apni expenses aur savings ko kese improve kar sakta hai.
 //       Answer Roman Urdu me do.
 //     `;
@@ -145,9 +109,7 @@ Sirf JSON object return karo, koi explanation ya extra text nahi likhna.
 //   }
 // }
 
-
 // module.exports = getAISuggestion;
-
 
 // const { GoogleGenerativeAI } = require("@google/generative-ai");
 
@@ -169,7 +131,7 @@ Sirf JSON object return karo, koi explanation ya extra text nahi likhna.
 //       Balance: ${totalBalance}
 //       Transactions: ${JSON.stringify(transactions, null, 2)}
 
-//       Ab is data ke basis par user ko 3 short aur smart suggestions do 
+//       Ab is data ke basis par user ko 3 short aur smart suggestions do
 //       ke wo apni expenses aur savings ko kese improve kar sakta hai.
 //       Answer Roman Urdu me do.
 //     `;
@@ -194,9 +156,6 @@ Sirf JSON object return karo, koi explanation ya extra text nahi likhna.
 // };
 
 // module.exports = getAISuggestion;
-
-
-
 
 // const { GoogleGenerativeAI } = require("@google/generative-ai");
 
@@ -242,7 +201,6 @@ Sirf JSON object return karo, koi explanation ya extra text nahi likhna.
 // };
 
 // module.exports = getAISuggestion
-
 
 // {
 //   "totalIncome": 120000,
