@@ -12,12 +12,11 @@ let cors = require('cors');
 app.use(express.json()); 
 
 
+// const corsOptions = {
+//   origin: 'http://localhost:3000'
+// };
 
-const corsOptions = {
-  origin: 'http://localhost:3000'
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 // to connect mongo db
 connectDB();
